@@ -5,5 +5,5 @@ public enum TaxTypes
     NotSetup,
     Progressive,
     FlatValue,
-    FlatRate,
+    FlatRate
 }
