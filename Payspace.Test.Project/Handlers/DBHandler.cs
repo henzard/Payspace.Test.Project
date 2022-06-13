@@ -15,10 +15,10 @@ public interface IDbHandler : IDisposable
 
 public class LiteDbHandler : IDbHandler
 {
-    private readonly ILogger _logger;
-    private readonly LiteCollection<CalculateTransactions> _collection;
+    private readonly ILogger<LiteDbHandler> _logger;
+    private readonly ILiteCollection<CalculateTransactions> _collection;
 
-    public LiteDbHandler(ILogger logger)
+    public LiteDbHandler(ILogger<LiteDbHandler> logger)
     {
         _logger = logger;
         var db = new LiteDatabase(@"app.db");
@@ -54,10 +54,10 @@ public class LiteDbHandler : IDbHandler
 
 public class SqlDbHandler : IDbHandler
 {
-    private readonly ILogger _logger;
+    private readonly ILogger<SqlDbHandler> _logger;
     private readonly SqlConnection _connection;
 
-    public SqlDbHandler(ILogger logger)
+    public SqlDbHandler(ILogger<SqlDbHandler> logger)
     {
         _logger = logger;
         var builder = new SqlConnectionStringBuilder

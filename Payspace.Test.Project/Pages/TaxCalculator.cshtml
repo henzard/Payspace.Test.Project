@@ -1,0 +1,48 @@
+@page
+@using Payspace.Test.Project.Models
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model TaxCalculator
+
+@{
+    ViewData["Title"] = "Tax Calculator";
+}
+<h1>@ViewData["Title"]</h1>
+<section>
+    <p>Logged in as @ViewData["UserName"] with last Calculation @ViewData["LastResult"]</p>
+</section>
+<p>New Request:</p>
+<form asp-page-handler="edit" method="post">
+    <div class="form-floating mb-3">
+        <label for="postalcode" class="form-label">Postal Code</label>
+        <input id="postalcode" class="form-control" type="text" asp-for="Request!.PostalCode"/>
+    </div>
+    <div class="form-floating mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <input class="form-control" id="amount" type="number" asp-for="Request!.Amount"/>
+    </div>
+    <button type="submit" class="btn btn-info">Save</button>
+</form>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table">
+            @if (Model.TransactionsList != null)
+            {
+                <tr>
+                    <td scope="col">ID</td>
+                    <td scope="col">Amount</td>
+                    <td scope="col">PostalCode</td>
+                    <td scope="col">TransactionDate</td>
+                </tr>
+                @foreach (var transaction in Model.TransactionsList)
+                {
+                    <tr>
+                        <td>@transaction.Id</td>
+                        <td>@transaction.Amount</td>
+                        <td>@transaction.PostalCode</td>
+                        <td>@transaction.TransactionDate</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

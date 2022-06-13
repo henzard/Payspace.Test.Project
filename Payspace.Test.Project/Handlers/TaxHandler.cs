@@ -11,9 +11,9 @@ public interface ITaxHandler
 
 public class TaxHandler : ITaxHandler
 {
-    private readonly ILogger _logger;
+    private readonly ILogger<TaxHandler> _logger;
 
-    public TaxHandler(ILogger logger)
+    public TaxHandler(ILogger<TaxHandler> logger)
     {
         _logger = logger;
     }

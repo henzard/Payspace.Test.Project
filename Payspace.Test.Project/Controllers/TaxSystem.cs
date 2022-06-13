@@ -10,9 +10,9 @@ public class TaxSystem : Controller
 {
     private readonly ITaxHandler _taxHandler;
     private readonly IDbHandler _dbHandler;
-    private readonly ILogger _logger;
+    private readonly ILogger<TaxSystem> _logger;
 
-    public TaxSystem(ITaxHandler taxHandler, IDbHandler dbHandler, ILogger logger)
+    public TaxSystem(ITaxHandler taxHandler, IDbHandler dbHandler, ILogger<TaxSystem> logger)
     {
         _taxHandler = taxHandler;
         _dbHandler = dbHandler;
