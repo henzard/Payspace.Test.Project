@@ -6,12 +6,12 @@ GO
 IF Not EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tbl_Transactions]') AND type in (N'U'))
 create table tbl_Transactions
 (
-    Id         uniqueidentifier,
-    PostalCode nvarchar(250),
-    Amount     nvarchar(100),
-    Result     numeric,
-    UserName   nvarchar(100),
-    TransactionDate       DATETIME
+    [Id] [uniqueidentifier] NULL,
+	[PostalCode] [nvarchar](250) NULL,
+	[Amount] [float] NULL,
+	[Result] [float] NULL,
+	[UserName] [nvarchar](100) NULL,
+	[TransactionDate] [datetime] NULL
 )
 GO
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_Transactions_Add]'))
