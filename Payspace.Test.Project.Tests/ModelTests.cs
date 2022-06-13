@@ -10,12 +10,12 @@ public class ModelTests
     [SetUp]
     public void Setup()
     {
-        
     }
+
     [Test]
     public void When_New_CalculateTransactions_Then_Id_And_Date_Is_Not_Default()
     {
-        var output = new CalculateTransactions()
+        var output = new CalculateTransactions
         {
             Amount = Amount,
             PostalCode = PostalCode,
@@ -29,18 +29,22 @@ public class ModelTests
         });
         Assert.Pass();
     }
+
     [Test]
     public void When_New_CalculateTransactions_Then_Both_Constructors_Match()
     {
-        var outputA = new CalculateTransactions()
+        var outputA = new CalculateTransactions
         {
             Amount = Amount,
             PostalCode = PostalCode,
             UserName = UserName,
             Result = Result
         };
-        var outputB = new CalculateTransactions(new CalculateRequest() {Amount = Amount,
-            PostalCode = PostalCode},Result, UserName);
+        var outputB = new CalculateTransactions(new CalculateRequest
+        {
+            Amount = Amount,
+            PostalCode = PostalCode
+        }, Result, UserName);
         Assert.Multiple(() =>
         {
             Assert.That(outputA.Amount, Is.EqualTo(outputB.Amount));

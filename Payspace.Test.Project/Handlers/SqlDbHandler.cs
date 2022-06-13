@@ -7,8 +7,8 @@ namespace Payspace.Test.Project.Handlers;
 
 public class SqlDbHandler : IDbHandler
 {
-    private readonly ILogger<SqlDbHandler> _logger;
     private readonly SqlConnection _connection;
+    private readonly ILogger<SqlDbHandler> _logger;
 
     public SqlDbHandler(ILogger<SqlDbHandler> logger)
     {
@@ -43,10 +43,7 @@ public class SqlDbHandler : IDbHandler
         }
         catch (Exception ex)
         {
-            if (_connection.State == ConnectionState.Open)
-            {
-                _connection.Close();
-            }
+            if (_connection.State == ConnectionState.Open) _connection.Close();
 
             _logger.LogError("{Message}", ex.Message);
             return false;
@@ -62,10 +59,7 @@ public class SqlDbHandler : IDbHandler
 
         using var command = new SqlCommand(sql, _connection);
         using var reader = command.ExecuteReader();
-        while (reader.Read())
-        {
-            data.Add(reader.ConvertToObject<CalculateTransactions>());
-        }
+        while (reader.Read()) data.Add(reader.ConvertToObject<CalculateTransactions>());
 
         return data;
     }

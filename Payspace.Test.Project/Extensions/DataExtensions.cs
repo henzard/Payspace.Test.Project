@@ -1,6 +1,5 @@
 using FastMember;
 using Microsoft.Data.SqlClient;
-using Payspace.Test.Project.Models;
 
 namespace Payspace.Test.Project.Extensions;
 
@@ -19,9 +18,7 @@ public static class DataExtensions
             var fieldName = rd.GetName(i);
 
             if (members.Any(m => string.Equals(m.Name, fieldName, StringComparison.OrdinalIgnoreCase)))
-            {
                 accessor[t, fieldName] = rd.GetValue(i);
-            }
         }
 
         return t;

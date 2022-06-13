@@ -1,5 +1,4 @@
 @page
-@using Payspace.Test.Project.Models
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model TaxCalculator
 
@@ -9,11 +8,11 @@
 <h1>@ViewData["Title"]</h1>
 <section>
     <p>Logged in as @ViewData["UserName"]</p>
-        @if (!string.IsNullOrWhiteSpace(ViewData["LastResult"]?.ToString()))
-        {
-            <p> with last Calculation @ViewData["LastResult"]</p>
-        }
-        
+    @if (!string.IsNullOrWhiteSpace(ViewData["LastResult"]?.ToString()))
+    {
+        <p> with last Calculation @ViewData["LastResult"]</p>
+    }
+
     @if (!string.IsNullOrWhiteSpace(ViewData["Error"]?.ToString()))
     {
         <p>Error Occured @ViewData["Error"]</p>

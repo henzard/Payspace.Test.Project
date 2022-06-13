@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Payspace.Test.Project.Handlers;
 using Payspace.Test.Project.Models;
@@ -8,12 +7,10 @@ namespace Payspace.Test.Project.Pages;
 
 public class TaxCalculator : PageModel
 {
-    private readonly ITaxHandler _taxHandler;
     private readonly IDbHandler _dbHandler;
     private readonly ILogger<TaxCalculator> _logger;
+    private readonly ITaxHandler _taxHandler;
     private string? _user;
-    public new CalculateRequest? Request { get; set; }
-    public List<CalculateTransactions>? TransactionsList { get; set; }
 
     public TaxCalculator(ITaxHandler taxHandler, IDbHandler dbHandler, ILogger<TaxCalculator> logger)
     {
@@ -21,6 +18,9 @@ public class TaxCalculator : PageModel
         _dbHandler = dbHandler;
         _logger = logger;
     }
+
+    public new CalculateRequest? Request { get; set; }
+    public List<CalculateTransactions>? TransactionsList { get; set; }
 
     public void OnPostDelete(string id)
     {

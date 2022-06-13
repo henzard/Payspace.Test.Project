@@ -8,9 +8,9 @@ namespace Payspace.Test.Project.Controllers;
 [Authorize]
 public class TaxSystem : Controller
 {
-    private readonly ITaxHandler _taxHandler;
     private readonly IDbHandler _dbHandler;
     private readonly ILogger<TaxSystem> _logger;
+    private readonly ITaxHandler _taxHandler;
 
     public TaxSystem(ITaxHandler taxHandler, IDbHandler dbHandler, ILogger<TaxSystem> logger)
     {
@@ -26,7 +26,7 @@ public class TaxSystem : Controller
         {
             var response = _taxHandler.CalculateTax(request);
             var user = User.Identity?.Name ?? "Unknown";
-            if(user == "Unknown")
+            if (user == "Unknown")
                 _logger.LogWarning("User not Found");
             _dbHandler.SaveRequest(new CalculateTransactions(request, response, user));
             return Ok(response);

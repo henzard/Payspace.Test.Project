@@ -6,8 +6,8 @@ namespace Payspace.Test.Project.Handlers;
 
 public class LiteDbHandler : IDbHandler
 {
-    private readonly ILogger<LiteDbHandler> _logger;
     private readonly ILiteCollection<CalculateTransactions> _collection;
+    private readonly ILogger<LiteDbHandler> _logger;
 
     public LiteDbHandler(ILogger<LiteDbHandler> logger)
     {
