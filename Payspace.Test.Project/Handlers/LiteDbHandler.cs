@@ -38,7 +38,7 @@ public class LiteDbHandler : IDbHandler
 
     public bool DeleteRecord(string id)
     {
-        return _collection.Delete(id);
+        return _collection.Delete(Guid.Parse(id));
     }
 
     public void Dispose()
