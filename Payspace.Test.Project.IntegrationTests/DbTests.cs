@@ -28,12 +28,12 @@ public class DbTests
     public void TestingSqlDb()
     {
         var logger = new NullLogger<SqlDbHandler>();
-        var liteDbHandler = new SqlDbHandler(logger);
-        liteDbHandler.SaveRequest(
+        var sqlDbHandler = new SqlDbHandler(logger);
+        sqlDbHandler.SaveRequest(
             new CalculateTransactions(new CalculateRequest() { Amount = 7000, PostalCode = "7000" }, 7000, "Test User"));
-        var rec = liteDbHandler.GetRecordsRequest("Test User");
+        var rec = sqlDbHandler.GetRecordsRequest("Test User");
         Assert.That(rec, Has.Count.EqualTo(1));
-        var res = liteDbHandler.DeleteRecord(rec.First().Id.ToString());
+        var res = sqlDbHandler.DeleteRecord(rec.First().Id.ToString());
         Assert.That(res, Is.True);
     }
 }

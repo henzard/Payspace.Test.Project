@@ -18,7 +18,7 @@ public class SqlDbHandler : IDbHandler
             DataSource = "localhost\\SQLEXPRESS",
             UserID = "sa",
             Password = "Alicia07",
-            InitialCatalog = "<your_database>"
+            InitialCatalog = "PaySpace"
         };
         _connection = new SqlConnection(builder.ConnectionString);
     }
@@ -55,9 +55,10 @@ public class SqlDbHandler : IDbHandler
 
     public List<CalculateTransactions> GetRecordsRequest(string user)
     {
-        _connection.Open();
+        if (_connection.State != ConnectionState.Open)
+            _connection.Open();
         var data = new List<CalculateTransactions>();
-        var sql = $"SELECT * FROM Transactions where user = {user}";
+        var sql = $"SELECT * FROM tbl_Transactions where UserName = '{user}'";
 
         using var command = new SqlCommand(sql, _connection);
         using var reader = command.ExecuteReader();
@@ -73,8 +74,10 @@ public class SqlDbHandler : IDbHandler
     {
         try
         {
-            var cmd = new SqlCommand($"Delete from Transactions where Id = {id}", _connection);
-            _connection.Open();
+            var cmd = new SqlCommand($"Delete from tbl_Transactions where Id = '{id}'", _connection);
+
+            if (_connection.State != ConnectionState.Open)
+                _connection.Open();
             cmd.ExecuteNonQuery();
             _connection.Close();
             _logger.LogDebug("DeleteRecord");
