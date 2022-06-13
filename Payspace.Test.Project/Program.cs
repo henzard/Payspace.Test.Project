@@ -19,6 +19,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 builder.Services.AddSingleton<ITaxHandler, TaxHandler>();
 builder.Services.AddSingleton<IDbHandler, LiteDbHandler>();
+//Switch to work with SQL
+//builder.Services.AddSingleton<IDbHandler, SqlDbHandler>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {
