@@ -6,7 +6,7 @@ GO
 IF Not EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tbl_Transactions]') AND type in (N'U'))
 create table tbl_Transactions
 (
-    Id         nvarchar(250),
+    Id         uniqueidentifier,
     PostalCode nvarchar(250),
     Amount     nvarchar(100),
     Result     numeric,
