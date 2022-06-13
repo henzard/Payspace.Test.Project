@@ -1,6 +1,6 @@
 namespace Payspace.Test.Project.Tests;
 
-public class Tests
+public class TaxCalculationTests
 {
     [SetUp]
     public void Setup()

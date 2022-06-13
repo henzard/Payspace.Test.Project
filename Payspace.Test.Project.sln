@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payspace.Test.Project", "Pa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payspace.Test.Project.Tests", "Payspace.Test.Project.Tests\Payspace.Test.Project.Tests.csproj", "{43272C30-B8AD-4FCA-BCC7-66EA0B64645D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payspace.Test.Project.IntegrationTests", "Payspace.Test.Project.IntegrationTests\Payspace.Test.Project.IntegrationTests.csproj", "{CA0DFBC8-F626-4409-B5F7-5066EB9B53AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{43272C30-B8AD-4FCA-BCC7-66EA0B64645D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43272C30-B8AD-4FCA-BCC7-66EA0B64645D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43272C30-B8AD-4FCA-BCC7-66EA0B64645D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA0DFBC8-F626-4409-B5F7-5066EB9B53AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA0DFBC8-F626-4409-B5F7-5066EB9B53AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA0DFBC8-F626-4409-B5F7-5066EB9B53AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA0DFBC8-F626-4409-B5F7-5066EB9B53AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

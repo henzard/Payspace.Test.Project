@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Payspace.Test.Project\Payspace.Test.Project.csproj" />
+      <ProjectReference Include="..\Payspace.Test.Project\Payspace.Test.Project.csproj" />
     </ItemGroup>
 
 </Project>
