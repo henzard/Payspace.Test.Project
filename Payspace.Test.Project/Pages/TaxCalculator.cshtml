@@ -8,7 +8,16 @@
 }
 <h1>@ViewData["Title"]</h1>
 <section>
-    <p>Logged in as @ViewData["UserName"] with last Calculation @ViewData["LastResult"]</p>
+    <p>Logged in as @ViewData["UserName"]</p>
+        @if (!string.IsNullOrWhiteSpace(ViewData["LastResult"]?.ToString()))
+        {
+            <p> with last Calculation @ViewData["LastResult"]</p>
+        }
+        
+    @if (!string.IsNullOrWhiteSpace(ViewData["Error"]?.ToString()))
+    {
+        <p>Error Occured @ViewData["Error"]</p>
+    }
 </section>
 <p>New Request:</p>
 <form asp-page-handler="edit" method="post">
@@ -43,7 +52,7 @@
                             <td>@transaction.PostalCode</td>
                             <td>@transaction.TransactionDate</td>
                             <td>
-                                <input class="form-control" id="amount" type="hidden" name="Id" value="@transaction.Id"/>
+                                <input class="form-control" id="amount" type="hidden" name="id" value="@transaction.Id"/>
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </td>
                         </form>

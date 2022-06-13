@@ -69,6 +69,24 @@ public class SqlDbHandler : IDbHandler
         return data;
     }
 
+    public bool DeleteRecord(string id)
+    {
+        try
+        {
+            var cmd = new SqlCommand($"Delete from Transactions where Id = {id}", _connection);
+            _connection.Open();
+            cmd.ExecuteNonQuery();
+            _connection.Close();
+            _logger.LogDebug("DeleteRecord");
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("{Message}", e.Message);
+            return false;
+        }
+    }
+
     public void Dispose()
     {
         _connection.Dispose();

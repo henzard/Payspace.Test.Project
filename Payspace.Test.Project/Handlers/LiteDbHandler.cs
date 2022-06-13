@@ -36,6 +36,11 @@ public class LiteDbHandler : IDbHandler
         return _collection.Find(transactions => transactions.UserName == user).ToList();
     }
 
+    public bool DeleteRecord(string id)
+    {
+        return _collection.Delete(id);
+    }
+
     public void Dispose()
     {
         _logger.LogDebug("Disposed");

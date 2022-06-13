@@ -6,4 +6,5 @@ public interface IDbHandler : IDisposable
 {
     bool SaveRequest(CalculateTransactions transaction);
     List<CalculateTransactions> GetRecordsRequest(string user);
+    bool DeleteRecord(string id);
 }

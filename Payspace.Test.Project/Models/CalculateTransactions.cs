@@ -17,7 +17,7 @@ public class CalculateTransactions
         
     }
     [BsonId]
-    public Guid Id { get; } = Guid.NewGuid();
+    public Guid Id { get; set; } = Guid.NewGuid();
     [JsonProperty("postalCode")]
     public string? PostalCode { get; set; }
     [JsonProperty("amount")]
@@ -27,5 +27,5 @@ public class CalculateTransactions
     [JsonProperty("user")]
     public string? UserName { get; set; }
     [JsonProperty("date")]
-    public DateTime TransactionDate { get; } = DateTime.UtcNow;
+    public DateTime TransactionDate { get; set; } = DateTime.UtcNow;
 }

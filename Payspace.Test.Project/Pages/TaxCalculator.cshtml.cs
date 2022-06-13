@@ -22,11 +22,13 @@ public class TaxCalculator : PageModel
         _logger = logger;
     }
 
-    public void OnPostDelete(string Id)
+    public void OnPostDelete(string id)
     {
-        _logger.LogWarning("Deleting {Id}", Id);
+        _logger.LogWarning("Deleting {Id}", id);
+        _user = User.Identity?.Name ?? "Unknown";
         ViewData["UserName"] = _user;
-        ViewData["LastResult"] = "0";
+        if (!_dbHandler.DeleteRecord(id))
+            ViewData["Error"] = "Record cannot Delete";
         TransactionsList = _dbHandler.GetRecordsRequest(_user);
     }
 
@@ -47,7 +49,6 @@ public class TaxCalculator : PageModel
     {
         _user = User.Identity?.Name ?? "Unknown";
         ViewData["UserName"] = _user;
-        ViewData["LastResult"] = "0";
         TransactionsList = _dbHandler.GetRecordsRequest(_user);
     }
 }
