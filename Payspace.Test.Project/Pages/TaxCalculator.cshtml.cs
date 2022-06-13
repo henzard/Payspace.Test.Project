@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Payspace.Test.Project.Handlers;
 using Payspace.Test.Project.Models;
@@ -12,7 +13,7 @@ public class TaxCalculator : PageModel
     private readonly ILogger<TaxCalculator> _logger;
     private string? _user;
     public new CalculateRequest? Request { get; set; }
-    public new List<CalculateTransactions>? TransactionsList { get; set; }
+    public List<CalculateTransactions>? TransactionsList { get; set; }
 
     public TaxCalculator(ITaxHandler taxHandler, IDbHandler dbHandler, ILogger<TaxCalculator> logger)
     {
@@ -21,18 +22,27 @@ public class TaxCalculator : PageModel
         _logger = logger;
     }
 
+    public void OnPostDelete(string Id)
+    {
+        _logger.LogWarning("Deleting {Id}", Id);
+        ViewData["UserName"] = _user;
+        ViewData["LastResult"] = "0";
+        TransactionsList = _dbHandler.GetRecordsRequest(_user);
+    }
+
     public void OnPostEdit(CalculateRequest request)
     {
         _user = User.Identity?.Name ?? "Unknown";
-        _logger.LogDebug("{Data}",SerializeObject(request));
+        _logger.LogDebug("{Data}", SerializeObject(request));
         var response = _taxHandler.CalculateTax(request);
-        if(_user == "Unknown")
+        if (_user == "Unknown")
             _logger.LogWarning("User not Found");
         _dbHandler.SaveRequest(new CalculateTransactions(request, response, _user));
         ViewData["LastResult"] = response;
         ViewData["UserName"] = _user;
         TransactionsList = _dbHandler.GetRecordsRequest(_user);
     }
+
     public void OnGet()
     {
         _user = User.Identity?.Name ?? "Unknown";

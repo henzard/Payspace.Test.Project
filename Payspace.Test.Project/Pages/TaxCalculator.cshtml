@@ -32,14 +32,21 @@
                     <td scope="col">Amount</td>
                     <td scope="col">PostalCode</td>
                     <td scope="col">TransactionDate</td>
+                    <td></td>
                 </tr>
                 @foreach (var transaction in Model.TransactionsList)
                 {
                     <tr>
-                        <td>@transaction.Id</td>
-                        <td>@transaction.Amount</td>
-                        <td>@transaction.PostalCode</td>
-                        <td>@transaction.TransactionDate</td>
+                        <form asp-page-handler="delete" method="post">
+                            <td>@transaction.Id</td>
+                            <td>@transaction.Amount</td>
+                            <td>@transaction.PostalCode</td>
+                            <td>@transaction.TransactionDate</td>
+                            <td>
+                                <input class="form-control" id="amount" type="hidden" name="Id" value="@transaction.Id"/>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </td>
+                        </form>
                     </tr>
                 }
             }
